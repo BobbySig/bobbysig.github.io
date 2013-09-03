@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Simple Pig Latin Translator</title>
+
+	<script type="text/javascript">
+		function isVowel(char) {
+			return ['a', 'e', 'i', 'o', 'u'].indexOf(char) != -1;
+		}
+
+		function consonant(text) {
+			i = 0;
+			while (!isVowel(text.charAt(i)))
+				i++;
+			return text.substring(i) + text.substring(0, i) + "ay";
+		}
+
+		function vowel(text) {
+			if (text.charAt(text.length - 1) == 's')
+				return text.substring(0, text.length -1) + "ays";
+			return text + "ay";
+		}
+
+		function wordProcessor(text) {
+			if (isVowel(text.charAt(0)))
+				return vowel(text);
+			else
+				return consonant(text);
+		}
+
+		function toPigLatin(form) {
+			form.output.value = "";
+			phrase = form.phrase.value;
+			endPhrase = "";
+			for (var i = 0; phrase.length > 0; i++) {
+				if (phrase[i] == null || phrase[i] == " ") {
+					endPhrase += wordProcessor(phrase.substring(0, i)) + " ";
+					if (phrase[i] == " ")
+						phrase =  phrase.substring(i + 1);
+					else
+						phrase = phrase.substring(i);
+					i = -1;
+				}
+				if (phrase.length == 1) {
+					endPhrase += wordProcessor(phrase);
+					phrase = "";
+				}
+			}
+			form.output.value += endPhrase;
+		}
+	</script>
+</head>
+
+<body>
+	<h1>English to Pig Latin Translator</h1>
+	<form name="inputs">
+		Text to Translate: 
+		<input name="phrase" type="text" placeholder="Enter Words" /> 
+		<input name="submit_text" type="button" onclick="toPigLatin(this.form)" Value="Translate"><br>
+		<textarea readonly name="output"></textarea>
+	</form>
+
+	<p>
+		Version 1.1.0.<br>
+		Uses the most basic rules defined <a href="http://www.indepthinfo.com/articles/pig-latin-rules.htm">here</a>.<br>
+		Developed by <a href="http://bobbysig.github.com">Bobby Signor</a>.<br>
+		August 3, 2013.
+	</p>
+</body>
+</html>

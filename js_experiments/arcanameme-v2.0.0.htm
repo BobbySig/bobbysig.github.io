@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Arcana Calculator</title>
+
+	<script type="text/javascript">		
+		function nameCalc(nameIn2) {
+			nameIn = nameIn2.toUpperCase();
+			total = 0;
+			for (var i = nameIn.length - 1; i >= 0; i--) {
+				switch(nameIn.charAt(i)) {
+					case 'A':
+					case 'J':
+					case 'S':
+						total++;
+						break;
+					case 'B':
+					case 'K':
+					case 'T':
+						total += 2;
+						break;
+					case 'C':
+					case 'L':
+					case 'U':
+						total += 3;
+						break;
+					case 'D':
+					case 'M':
+					case 'V':
+						total += 4;
+						break;
+					case 'E':
+					case 'N':
+					case 'W':
+						total += 5;
+						break;
+					case 'F':
+					case 'O':
+					case 'X':
+						total += 6;
+						break;
+					case 'G':
+					case 'P':
+					case 'Y':
+						total += 7;
+						break;
+					case 'H':
+					case 'Q':
+					case 'Z':
+						total += 8;
+						break;
+					case 'I':
+					case 'R':
+						total += 9;
+						break;
+				}
+			}
+			return sumDigits(total);
+		}
+
+		function showArcana(aNum) {
+			urlStart = "http://www.thelostfound.com/tarot/cards/meanings/";
+			switch(aNum) {
+				case 0:
+				case "0":
+				case 22:
+				case "22":
+					return"<a href=" + urlStart + "fool.html>Fool</a>";
+					break;
+				case 1:
+				case "1":
+					return "<a href=" + urlStart + "magus.html>Magician</a>";
+					break;
+				case 2:
+				case "2":
+					return "<a href=" + urlStart + "priestess.html>High Priestess</a>";
+					break;
+				case 3:
+				case "3":
+					return "<a href=" + urlStart + "empress.html>Empress</a>";
+					break;
+				case 4:
+				case "4":
+					return "<a href=" + urlStart + "emperor.html>Emperor</a>";
+					break;
+				case 5:
+				case "5":
+					return "<a href=" + urlStart + "hiero.html>Hierophant</a>";
+					break;
+				case 6:
+				case "6":
+					return "<a href=" + urlStart + "lovers.html>Lovers</a>";
+					break;
+				case 7:
+				case "7":
+					return "<a href=" + urlStart + "chariot.html>Chariot</a>";
+					break;
+				case 8:
+				case "8":
+					return "<a href=" + urlStart + "strength.html>Strength</a>";
+					break;
+				case 9:
+				case "9":
+					return "<a href=" + urlStart + "hermit.html>Hermit</a>";
+					break;
+				case 10:
+				case "10":
+					return "<a href=" + urlStart + "fortune.html>Fortune</a>";
+					break;
+				case 11:
+				case "11":
+					return "<a href=" + urlStart + "justice.html>Justice</a>";
+					break;
+				case 12:
+				case "12":
+					return "<a href=" + urlStart + "hanged.html>Hanged Man</a>";
+					break;
+				case 13:
+				case "13":
+					return "<a href=" + urlStart + "death.html>Death</a>";
+					break;
+				case 14:
+				case "14":
+					return "<a href=" + urlStart + "temperan.html>Tempperance</a>";
+					break;
+				case 15:
+				case "15":
+					return "<a href=" + urlStart + "devil.html>Devil</a>";
+					break;
+				case 16:
+				case "16":
+					return "<a href=" + urlStart + "tower.html>Tower</a>";
+					break;
+				case 17:
+				case "17":
+					return "<a href=" + urlStart + "star.html>Star</a>";
+					break;
+				case 18:
+				case "18":
+					return "<a href=" + urlStart + "moon.html>Moon</a>";
+					break;
+				case 19:
+				case "19":
+					return "<a href=" + urlStart + "sun.html>Sun</a>";
+					break;
+				case 20:
+				case "20":
+					return "<a href=" + urlStart + "judge.html>Judgment</a>";
+					break;
+				case 21:
+				case "21":
+					return "<a href=" + urlStart + "world.html>World</a>";
+					break;
+				default:
+					return "Not a valid response. Blame the dumbfuck who wrote this thing.";
+					break;
+			}
+		}
+		
+		function sumDigits(nums) {
+			bPLong = parseInt(nums);
+			out = 0;
+			while (bPLong > 0) {
+				out += Math.floor(bPLong % 10);
+				bPLong = Math.floor(bPLong / 10);
+			}
+			return out;
+		}
+
+		function goDoStuff(form) {
+			firstTotal = nameCalc(form.first_name.value);
+			middleTotal = nameCalc(form.middle_name.value);
+			lastTotal = nameCalc(form.last_name.value);
+
+			destinyNum = sumDigits(firstTotal + middleTotal + lastTotal);
+
+			birthPath = sumDigits(sumDigits(form.birth_year.value + form.birth_month.value + form.birth_day.value));
+			arcanaNum = destinyNum + birthPath;
+
+			document.getElementById('output').innerHTML = form.first_name.value + " " + form.middle_name.value + " " + form.last_name.value + ",<br>";
+
+			document.getElementById('output').innerHTML += "your Destiny Number is " + destinyNum + ",<br>";
+			document.getElementById('output').innerHTML += "your Birth Path is " + birthPath + ",<br>";
+			document.getElementById('output').innerHTML += "and your Arcana Number is " + arcanaNum + ".<br>";
+			document.getElementById('output').innerHTML += "That means you belong to the " + showArcana(arcanaNum) + " Arcana!<br>";
+		}
+	</script>
+</head>
+
+<body>
+	<h1>Arcana Calculator</h1>
+
+	<form name="stuff">
+		First Name: <input name="first_name" placeholder="Enter First Name" /><br>
+		Middle Name: <input name="middle_name" placeholder="Enter Middle Name" /><br>
+		Last Name: <input name="last_name" placeholder="Enter Last Name" /><br><br>
+
+		Number of Birth Month: <input name="birth_month" placeholder="Enter Birth Month" /><br>
+		Number of Birth Day of the Month: <input name="birth_day" placeholder="Enter Birth Day" /><br>
+		Number of Birth Year: <input name="birth_year" placeholder="Enter Birth Year" /><br><br>
+
+		<input name="submit" type="button" value="Calculate" onClick="goDoStuff(this.form)" />
+	</form>
+
+	<p id="output" />
+
+	<p>
+		Version 2.0.0.<br>
+		Developed by <a href="http://bobbysig.github.com">Bobby Signor</a> on the night of August 1st, 2013.<br>
+		Updated by <a href="http://bobbysig.github.com">Bobby Signor</a> on the night of August 28, 2013.<br>
+		Based on the rules established by <a href="http://abalisk.deviantart.com/art/What-s-your-Arcana-Meme-181457001">this</a> deviantart post.
+	</p>
+</body>
+</html>
