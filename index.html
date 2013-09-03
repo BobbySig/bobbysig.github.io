@@ -16,17 +16,16 @@
     <link rel="stylesheet" href="stylesheets/ie.css">
     <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
   </head>
+
   <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/BobbySig">View On GitHub</a></li>
-        </nav>
-      </div><!-- end header -->
+    <div id="header">
+      <nav>
+        <li class="fork"><a href="https://github.com/BobbySig">View On GitHub</a></li>
+      </nav>
+    </div><!-- end header -->
 
-    <div class="wrapper">
-
+    <div class="wrapper" contenteditable="true">
       <section>
         <div id="title">
           <h1>Bobby Signor's Website</h1>
@@ -89,7 +88,8 @@
         <p>
           <textarea name="editor1">&lt;p&gt;Initial value.&lt;/p&gt;</textarea>
           <script>
-              CKEDITOR.replace('editor1');
+            CKEDITOR.disableAutoInline = true;
+            CKEDITOR.inline('wrapper');
           </script>
         </p>
       </section>
