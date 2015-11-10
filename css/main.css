@@ -168,10 +168,10 @@ aside a.social:hover {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-   
+
 img.social-logo {
   height: 26px;
-  width: 26px;
+  width: auto;
   padding-right: 5px;
 }
 
@@ -245,12 +245,12 @@ a.ref {
         float: right;
         width: 38%;
     }
-    
+
     .header-container {
       position: fixed;
       width: 100%;
     }
-    
+
     .main-container {
       padding-top: 96px;
     }
@@ -268,7 +268,7 @@ a.ref {
         float: right;
         width: 28%;
     }
-    
+
     a.ref {
       top: -106px;
     }
