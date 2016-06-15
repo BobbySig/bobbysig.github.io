@@ -5,19 +5,30 @@
 
   <script type="text/javascript">
     function launchThings() {
-      window.open("s1.html", "s1", "width=300, height=300");
-      window.open("s2.html", "s2", "width=300, height=300");
-      window.open("s3.html", "s3", "width=300, height=300");
-      window.open("s4.html", "s4", "width=300, height=300");
-      window.open("s5.html", "s5", "width=300, height=300");
-      window.open("s6.html", "s6", "width=300, height=300");
-      window.open("s7.html", "s7", "width=300, height=300");
+      w1 = window.open("s1.html", "s1", "width=300, height=300");
+      w2 = window.open("s2.html", "s2", "width=300, height=300");
+      w3 = window.open("s3.html", "s3", "width=300, height=300");
+      w4 = window.open("s4.html", "s4", "width=300, height=300");
+      w5 = window.open("s5.html", "s5", "width=300, height=300");
+      w6 = window.open("s6.html", "s6", "width=300, height=300");
+      w7 = window.open("s7.html", "s7", "width=300, height=300");
+    }
+
+    function closeThings() {
+      w1.close();
+      w2.close();
+      w3.close();
+      w4.close();
+      w5.close();
+      w6.close();
+      w7.close();
     }
   </script>
 </head>
 
 <body>
   <button onclick="launchThings()">Launch Things</button>
+  <button onclick="closeThings()">Close Things</button>
 </body>
 
 </html>
