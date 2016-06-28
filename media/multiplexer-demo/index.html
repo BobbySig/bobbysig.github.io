@@ -5,13 +5,13 @@
 
   <script type="text/javascript">
     function launchThings() {
-      w1 = window.open("s1.html", "s1", "width=300, height=300");
-      w2 = window.open("s2.html", "s2", "width=300, height=300");
-      w3 = window.open("s3.html", "s3", "width=300, height=300");
-      w4 = window.open("s4.html", "s4", "width=300, height=300");
-      w5 = window.open("s5.html", "s5", "width=300, height=300");
-      w6 = window.open("s6.html", "s6", "width=300, height=300");
-      w7 = window.open("s7.html", "s7", "width=300, height=300");
+      w1 = window.open("identifiers/1.html", "s1", "width=320, height=240");
+      w2 = window.open("identifiers/2.html", "s2", "width=320, height=240");
+      w3 = window.open("identifiers/3.html", "s3", "width=320, height=240");
+      w4 = window.open("identifiers/4.html", "s4", "width=320, height=240");
+      w5 = window.open("identifiers/5.html", "s5", "width=320, height=240");
+      w6 = window.open("identifiers/6.html", "s6", "width=320, height=240");
+      w7 = window.open("identifiers/7.html", "s7", "width=320, height=240");
     }
 
     function closeThings() {
@@ -23,12 +23,41 @@
       w6.close();
       w7.close();
     }
+
+    function showSlides() {
+      w1.location.href = "s1.html";
+      w2.location.href = "s2.html";
+      w3.location.href = "s3.html";
+      w4.location.href = "s4.html";
+      w5.location.href = "s5.html";
+      w6.location.href = "s6.html";
+      w7.location.href = "s7.html";
+    }
+
+    function identify() {
+      w1.location.href = "identifiers/1.html";
+      w2.location.href = "identifiers/2.html";
+      w3.location.href = "identifiers/3.html";
+      w4.location.href = "identifiers/4.html";
+      w5.location.href = "identifiers/5.html";
+      w6.location.href = "identifiers/6.html";
+      w7.location.href = "identifiers/7.html";
+    }
   </script>
 </head>
 
 <body>
-  <button onclick="launchThings()">Launch Things</button>
-  <button onclick="closeThings()">Close Things</button>
+  <p>
+    <button onclick="launchThings()">Launch Things</button>
+    <button onclick="closeThings()">Close Things</button>
+  </p>
+  <p>
+    <button onclick="identify()">Identify Windows</button>
+    <button onclick="showSlides()">Display Slides</button>
+  </p>
+  <p>
+    Press F11 in a window to fullscreen it.
+  </p>
 </body>
 
 </html>
